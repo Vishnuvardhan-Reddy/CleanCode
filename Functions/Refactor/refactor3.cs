@@ -36,6 +36,9 @@ public class EmployeeDatabase
 public class EmployeeService 
 {
     private readonly EmployeeDatabase employeeDatabase;
+    const int charimanID = 1;
+    const int nameLength = 150;
+    const int reservedEmployeeID = 50
 
     public EmployeeService(EmployeeDatabase repo) 
     {
@@ -44,15 +47,13 @@ public class EmployeeService
 
     public Employee GetEmployee(int id) 
     {
-        if (emp.ID < 50)
-            throw new InvalidDataException("Employee ID starts from 50 , 1 to 49 is reserved for promoters , investors etc . Data cant be shared in HRMS due to Security issues ");
-
+        ValidateReservedEmployee(id)
         return employeeDatabase.GetEmployee(id);
     }
 
     public void UpdateEmployee(Employee emp) 
     {
-        if (emp.Name.Length > 150)
+        if (emp.Name.Length > nameLength)
             throw new InvalidDataException("Name too long");
 
         employeeDatabase.SaveEmployee(emp);
@@ -60,9 +61,15 @@ public class EmployeeService
 
     public void RemoveEmployee(int id) 
     {
-        if (emp.ID == 1)
+        if (emp.ID == charimanID)
             throw new InvalidDataException("Chariman cant be removed ");
 
         employeeDatabase.DeleteEmployee(id);
+    }
+
+    private ValidateReservedEmployee (int id){
+        
+            if (id < reservedEmployeeID)
+            throw new InvalidDataException("Employee ID starts from 50 , 1 to 49 is reserved for promoters , investors etc . Data cant be shared in HRMS due to Security issues ");
     }
 }
