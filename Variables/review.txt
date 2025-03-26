@@ -1,0 +1,70 @@
+1.
+
+public bool IsShopOpen(string day)
+{
+    if (string.IsNullOrEmpty(day))
+    {
+        return false;
+    }
+
+        var aListOfOpenedDays = new List<string>{"friday", "saturday", "sunday"};
+        day = day.ToLower();
+        return aListOfOpenedDays.Contains(day);
+}
+
+2.
+
+public long Fibonacci(int n)
+{
+    if (n >= 50)
+        throw new System.Exception("Not supported");
+
+    if (n == 0) return 0;
+    if (n == 1) return 1;
+
+    int a = 0, b = 1;
+    for (int i = 2; i <= n; i++)
+    {
+        int temp = a + b;
+        a = b;
+        b = temp;
+    }
+    return b;
+}
+
+
+3.
+
+var CityNames = new[] { "Austin", "New York", "San Francisco" };
+
+for (var i = 0; i < CityNames.Count(); i++)
+{
+    
+    DoStuff();
+    DoSomeOtherStuff();
+
+    // ...
+    // ...
+    // ...
+    // Wait, what is `li` for again?
+    var cityName = l[i];
+    Dispatch(cityName);
+}
+
+4.
+
+const int AdminRole = 8
+if (userRole == AdminRole) // Check if Admin 
+{
+
+}
+
+5.
+public class Car
+{
+    public string Make { get; set; }
+    public string Model { get; set; }
+    public string Color { get; set; }
+}
+
+
